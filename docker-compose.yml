@@ -1,0 +1,21 @@
+version: '3'
+services:
+  frontend:
+    build: "FrontEnd/."
+    networks: 
+      - "taller-servicios"
+  cliente:
+    build: "Cliente/."
+    networks: 
+      - "taller-servicios"
+    depends_on:
+      - frontend
+  cuenta:
+    build: "Cuenta/."
+    networks: 
+      - "taller-servicios"
+    depends_on:
+      - frontend
+networks:
+  taller-servicios:
+    driver: bridge
